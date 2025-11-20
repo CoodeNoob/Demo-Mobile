@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper_plus/flutter_swiper_plus.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -8,6 +9,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  // Image list
+  final List<String> images = [
+    "https://picsum.photos/id/1001/400/250",
+    "https://picsum.photos/id/1002/400/250",
+    "https://picsum.photos/id/1003/400/250",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +30,26 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: Center(child: Text("HomePage")),
+      body: Column(
+        children: [
+          Text("Hello", style: TextStyle(fontSize: 24)),
+          Expanded(
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 8.0,
+                mainAxisSpacing: 2.0,
+              ),
+              itemCount: 6,
+
+              itemBuilder: (context, index) {
+                return Image(image: AssetImage("assets/images/google.png"));
+              },
+            ),
+          ),
+        ],
+      ),
+
       drawer: Drawer(
         child: ListView(
           children: [
